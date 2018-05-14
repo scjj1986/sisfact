@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 14-05-2018 a las 15:29:04
+-- Tiempo de generación: 14-05-2018 a las 21:08:00
 -- Versión del servidor: 5.7.17-log
 -- Versión de PHP: 5.6.30
 
@@ -45,7 +45,7 @@ INSERT INTO `clientes` (`id_cliente`, `docide_cliente`, `nombre_cliente`, `telef
 (1, '15000001', 'ELSA CAPUNTA', '+584268859745', 'elsacapunta@gmail.com', 'DIRECCION DE PRUEBA', 1, '2018-05-10 21:08:09'),
 (3, '15000000', 'SANDRA VEGA', '+999999990', 'sandravega@correo.com', 'AV PRINCIPAL.PILAR', 1, '2018-05-11 21:26:13'),
 (4, '15000002', 'BELKYS RAMIREZ', '+999999991', 'bramirez@gfgfd.com', 'AV 2. PILAR', 1, '2018-05-11 21:54:25'),
-(5, '15000003', 'ALDO PEROTTI', '', '', '', 1, '2018-05-14 14:28:24');
+(5, '15000003', 'ALDO PEROTTI M', '', '', '', 1, '2018-05-14 14:28:24');
 
 -- --------------------------------------------------------
 
@@ -122,7 +122,10 @@ CREATE TABLE `detalle_factura` (
 INSERT INTO `detalle_factura` (`id_detalle`, `numero_factura`, `id_producto`, `cantidad`, `precio_venta`) VALUES
 (7, 4, 4, 700, 1.5),
 (2, 2, 1, 3, 20),
-(4, 3, 2, 50, 15);
+(4, 3, 2, 50, 15),
+(8, 5, 15, 1, 399),
+(9, 5, 12, 1, 27),
+(10, 6, 3, 55, 17);
 
 -- --------------------------------------------------------
 
@@ -148,7 +151,9 @@ CREATE TABLE `facturas` (
 INSERT INTO `facturas` (`id_factura`, `numero_factura`, `fecha_factura`, `id_cliente`, `id_vendedor`, `condiciones`, `total_venta`, `estado_factura`) VALUES
 (3, 3, '2018-05-13 23:53:27', 1, 2, '1', '757.5', 1),
 (2, 2, '2018-05-12 00:50:01', 3, 2, '1', '60.6', 1),
-(4, 4, '2018-05-14 14:29:19', 5, 1, '1', '1060.5', 1);
+(4, 4, '2018-05-14 14:29:19', 5, 1, '1', '1060.5', 1),
+(5, 5, '2018-05-14 20:11:40', 4, 2, '1', '430.26', 1),
+(6, 6, '2018-05-14 20:20:49', 3, 2, '1', '944.35', 1);
 
 -- --------------------------------------------------------
 
@@ -176,7 +181,7 @@ CREATE TABLE `perfil` (
 --
 
 INSERT INTO `perfil` (`id_perfil`, `nombre_empresa`, `direccion`, `ciudad`, `codigo_postal`, `estado`, `telefono`, `email`, `impuesto`, `moneda`, `logo_url`, `cuil`) VALUES
-(1, 'Madero Materiales', 'Av. General Paz 15199 -Esquina la bajada- frente a la estacion de v. madero', 'Buenos Aires', '1111', 'Buenos Aires', '4453-8373/8064', 'maderomateriales@noexiste.com', 1, '$', 'img/1526083739_materialesmadero.jpg', '20-17902533-9');
+(1, 'Madero Materiales', 'Av. General Paz 15199 -Esquina la bajada- frente a la estacion de v. madero', 'Buenos Aires', '1111', 'Buenos Aires', '4453-8373/8064', 'maderomateriales@noexiste.com', 1, '$', 'img/1526328753_materialesmadero.jpg', '20-17902533-9');
 
 -- --------------------------------------------------------
 
@@ -206,7 +211,13 @@ INSERT INTO `products` (`id_producto`, `codigo_producto`, `nombre_producto`, `st
 (6, '006', 'BLOQUE DE ARCILLA 15X20X30 CMS.', 1, '2018-05-13 23:27:16', 1.7),
 (7, '007', 'BLOQUE DE CONCRETO 10X20X30 CMS.', 1, '2018-05-13 23:29:30', 1.7),
 (8, '008', 'BLOQUE DE CONCRETO 12X20X30 CMS.', 1, '2018-05-13 23:30:45', 1.8),
-(9, '009', 'BLOQUE DE CONCRETO 15X20X30 CMS.', 1, '2018-05-13 23:31:30', 1.9);
+(9, '009', 'BLOQUE DE CONCRETO 15X20X30 CMS.', 1, '2018-05-13 23:31:30', 1.9),
+(10, '010', 'CEMENTO 50 KGS.', 1, '2018-05-14 19:44:09', 65),
+(11, '011', 'CAL HIDRATADA 1RA CALIDAD 25 KGS.', 1, '2018-05-14 19:45:37', 32),
+(12, '012', 'CAL HIDRATADA COMUN 25 KGS.', 1, '2018-05-14 19:46:08', 27),
+(13, '013', 'LATEX EXTERIOR 1RA. CALIDAD 20 LTS.', 1, '2018-05-14 19:47:49', 695),
+(14, '014', 'LATEX INTERIOR 20 LTS.', 1, '2018-05-14 19:48:26', 550),
+(15, '015', 'LATEX COMUN 20 LTS.', 1, '2018-05-14 19:48:51', 399);
 
 -- --------------------------------------------------------
 
@@ -323,12 +334,12 @@ ALTER TABLE `currencies`
 -- AUTO_INCREMENT de la tabla `detalle_factura`
 --
 ALTER TABLE `detalle_factura`
-  MODIFY `id_detalle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_detalle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT de la tabla `facturas`
 --
 ALTER TABLE `facturas`
-  MODIFY `id_factura` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_factura` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT de la tabla `perfil`
 --
@@ -338,7 +349,7 @@ ALTER TABLE `perfil`
 -- AUTO_INCREMENT de la tabla `products`
 --
 ALTER TABLE `products`
-  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT de la tabla `tmp`
 --
